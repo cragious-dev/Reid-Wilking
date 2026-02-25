@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reid Wilking | Official Creator Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Exact Colors from Screenshot */
+            --accent: #F37021;       /* Vibrant Orange */
+            --accent-dark: #D65A10;  /* Deep Orange */
+            --navy: #2B3D52;         /* Deep Navy Blue */
+            --bg-main: #FFFFFF;
+            --bg-card: #F8FAFC;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --glass: blur(12px) saturate(160%);
+            --shadow: 0 15px 35px rgba(43, 61, 82, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--bg-main);
+            /* --- INTENSIFIED STUDIO GLOW ADDED HERE --- */
+            background-image: 
+                radial-gradient(circle at 50% -10%, rgba(243, 112, 33, 0.22), transparent 1000px),
+                radial-gradient(circle at 0% 0%, rgba(243, 112, 33, 0.12), transparent 40%),
+                radial-gradient(circle at 100% 0%, rgba(43, 61, 82, 0.15), transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%; background: rgba(255, 255, 255, 0.85); backdrop-filter: var(--glass);
+            position: sticky; top: 0; z-index: 1000; border-bottom: 4px solid var(--accent);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.03);
+        }
+        .logo-text { font-family: 'Orbitron'; font-weight: bold; font-size: 1.4rem; color: var(--navy); text-decoration: none; letter-spacing: 2px; }
+        .logo-text span { color: var(--accent); }
+
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--navy); font-size: 0.85rem; transition: 0.3s; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;}
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- HERO SECTION --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+        
+        .brand-header { text-align: center; margin-bottom: 80px; }
+        .main-brand-logo { 
+            width: 200px; height: 200px; object-fit: cover; border-radius: 50%; 
+            margin-bottom: 25px; border: 8px solid #fff; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1); transition: var(--transition);
+        }
+        .main-brand-logo:hover { transform: scale(1.05) rotate(3deg); box-shadow: 0 25px 60px rgba(243, 112, 33, 0.2); }
+        
+        .section-title { 
+            font-family: 'Orbitron'; text-align: center; margin-bottom: 50px; 
+            color: var(--navy); font-size: 2.2rem; letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* --- STATS --- */
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-bottom: 100px; }
+        .stat-item {
+            background: var(--bg-card);
+            padding: 40px 20px; border-radius: 35px; text-align: center;
+            box-shadow: var(--shadow); border: 1px solid #e2e8f0; transition: var(--transition);
+        }
+        .stat-item h2 { color: var(--accent); font-size: 2.8rem; font-family: 'Orbitron'; margin-bottom: 5px; }
+        .stat-item p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--navy); }
+        .stat-item:hover { transform: translateY(-12px); border-color: var(--accent); background: #fff; box-shadow: 0 20px 40px rgba(243, 112, 33, 0.15); }
+
+        /* --- SOCIAL LINKS --- */
+        .grid-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 100px; }
+        .link-card {
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; padding: 30px;
+            background: var(--bg-card); border-radius: 25px; text-decoration: none;
+            color: var(--navy); box-shadow: var(--shadow); transition: var(--transition);
+            border: 1px solid transparent; text-align: center;
+        }
+        .link-card img { width: 45px; height: 45px; transition: var(--transition); object-fit: contain; }
+        .link-card h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .link-card:hover { transform: translateY(-8px); border-color: var(--accent); background: #fff; }
+        .link-card:hover img { transform: scale(1.1); }
+
+        /* --- VIDEO BOX --- */
+        .video-box {
+            border-radius: 40px; overflow: hidden; position: relative;
+            padding-bottom: 56.25%; height: 0; border: 12px solid #fff;
+            margin-bottom: 100px; box-shadow: 0 35px 70px rgba(0,0,0,0.08);
+        }
+        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* --- MERCH GRID --- */
+        .merch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 100px; }
+        .product-card { background: var(--bg-card); border-radius: 30px; overflow: hidden; box-shadow: var(--shadow); text-align: center; transition: var(--transition); border: 1px solid #e2e8f0; }
+        
+        .product-img-container { height: 250px; width: 100%; display: flex; align-items: center; justify-content: center; background: #fff; padding: 20px; }
+        .product-img-container img { max-width: 100%; max-height: 100%; object-fit: contain; transition: var(--transition); }
+        
+        .product-info { padding: 30px; }
+        .product-info h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--navy); }
+        .price { color: var(--accent); font-weight: bold; font-size: 1.5rem; margin-bottom: 20px; font-family: 'Orbitron'; }
+
+        /* Hover Effects Restored */
+        .product-card:hover { transform: translateY(-8px); border: 1px solid var(--accent); background: #fff; }
+        .product-card:hover .product-img-container img { transform: scale(1.1) rotate(-2deg); }
+
+        /* --- CONTACT SECTION --- */
+        .contact-card {
+            background: var(--bg-card);
+            padding: 60px;
+            border-radius: 45px;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .contact-form { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+        .contact-form input, .contact-form textarea {
+            padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0;
+            font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); background: #fff; }
+
+        /* --- BUTTONS --- */
+        .btn { 
+            display: inline-block; padding: 15px 25px; background: var(--navy); 
+            color: #fff; text-decoration: none; border-radius: 15px; font-weight: 800; 
+            transition: 0.3s; border: none; cursor: pointer; font-size: 0.85rem; 
+            text-transform: uppercase; font-family: 'Orbitron'; width: 100%;
+        }
+        .btn:hover { background: var(--accent); transform: scale(1.02); }
+
+        /* --- MOBILE MEDIA QUERIES --- */
+        @media (max-width: 768px) { 
+            .nav-links { display: none; }
+            .section-title { font-size: 1.6rem; margin-bottom: 30px; }
+            .container { padding: 30px 15px; }
+
+            .stats-row { grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 60px; }
+            .stat-item { padding: 15px 5px; border-radius: 20px; }
+            .stat-item h2 { font-size: 1.2rem; }
+            .stat-item p { font-size: 0.5rem; letter-spacing: 1px; }
+
+            .grid-links { grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 60px; }
+            .link-card { padding: 15px 5px; border-radius: 15px; }
+            .link-card h3 { font-size: 0.6rem; }
+            .link-card img { width: 28px; height: 28px; }
+
+            .merch-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .product-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+            .product-card:last-child:nth-child(odd) .product-img-container { height: 200px; }
+
+            .product-img-container { height: 160px; }
+            .product-info { padding: 15px; }
+            .product-info h3 { font-size: 0.9rem; }
+            .price { font-size: 1rem; }
+            .btn { font-size: 0.7rem; padding: 12px 10px; }
+
+            .contact-card { padding: 30px 20px; border-radius: 30px; }
+        }
+
+        .reveal { animation: fadeInUp 0.8s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home" class="logo-text">Reid<span>Wilking</span></a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#latest">Reviews</a></li>
+            <li><a href="#merch">Gear</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container reveal" id="home">
+        
+        <header class="brand-header">
+            <img src="reid.jpg" alt="Cameron" class="main-brand-logo">
+            <h1 style="font-size: 2.5rem; color: var(--navy); margin-bottom: 10px; font-family: 'Orbitron';">I'M <span style="color:var(--accent)">Reid Wilking</span></h1>
+            <p style="letter-spacing: 4px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; font-size: 0.7rem;">Reviewer • Productivity • Design</p>
+        </header>
+
+        <div class="stats-row">
+            <div class="stat-item"><h2>16K</h2><p>Subs</p></div>
+            <div class="stat-item"><h2>5M</h2><p>Views</p></div>
+            <div class="stat-item"><h2>4K</h2><p>Quality</p></div>
+        </div>
+
+        <section id="links">
+            <h2 class="section-title">Connect</h2>
+            <div class="grid-links">
+                <a href="#" class="link-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube">
+                    <h3>YouTube</h3>
+                </a>
+                <a href="#" class="link-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram">
+                    <h3>Instagram</h3>
+                </a>
+                <a href="#" class="link-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png" alt="Amazon" style="width: 60px; height: auto;">
+                    <h3>Store</h3>
+                </a>
+            </div>
+        </section>
+
+        <section id="latest">
+            <h2 class="section-title">Latest Review</h2>
+            <div class="video-box">
+                <iframe src="https://www.youtube.com/embed/S_B7xY-rR9U" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="merch">
+            <h2 class="section-title">Recommended Gear</h2>
+            <div class="merch-grid">
+                <div class="product-card">
+                    <div class="product-img-container"><img src="keychron M5.webp" alt="Keychron M5"></div>
+                    <div class="product-info"><h3>Keychron M5</h3><p class="price">$69.99</p><a href="#" class="btn">PURCHASE</a></div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container"><img src="nuphy node.webp" alt="NuPhy Node"></div>
+                    <div class="product-info"><h3>NuPhy Node75</h3><p class="price">$99.99</p><a href="#" class="btn">PURCHASE</a></div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-container"><img src="nuphy halo.webp" alt="NuPhy Halo"></div>
+                    <div class="product-info"><h3>NuPhy Halo v2</h3><p class="price">$129.99</p><a href="#" class="btn">PURCHASE</a></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Inquiries</h2>
+            <div class="contact-card">
+                <p style="color: var(--text-muted); font-weight: 600;">Interested in collaborating or have a question about my setup?</p>
+                <form class="contact-form">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea rows="5" placeholder="Your Message..." required></textarea>
+                    <button type="submit" class="btn">Send Inquiry</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <footer style="text-align: center; padding: 40px 20px; opacity: 0.8; font-size: 0.7rem; color: var(--navy); letter-spacing: 2px;">
+        &copy; 2026 CAMERON DOUGHERTY. <br> 
+        <span style="font-weight: 700; color: var(--accent);">OPTIMIZE YOUR WORKFLOW.</span>
+    </footer>
+
+</body>
+</html>
